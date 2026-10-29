@@ -2385,7 +2385,7 @@ impl LocalContentLoader {
                 let file_name_os = path.file_name().unwrap_or_default();
                 let file_name_str = file_name_os.to_string_lossy().to_string();
                 let metadata = fs::metadata(&path).await.map_err(|e| AppError::Io(e))?;
-                let file_size = metadata.len();
+                let file_size = if is_dir_flag { 0 } else { metadata.len() };
                 let mtime_ms = metadata
                     .modified()
                     .ok()
