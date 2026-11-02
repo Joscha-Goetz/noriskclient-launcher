@@ -493,7 +493,9 @@ export function useLocalContentManager<T extends LocalContentItem>({
       for (const item of items) {
         if (!item.path) continue;
         const lowerPath = item.path.toLowerCase();
-        const isArchive = contentType === 'NoRiskMod' ? lowerPath.endsWith('.jar') : lowerPath.endsWith('.zip');
+        const isArchive = contentType === 'NoRiskMod'
+          ? lowerPath.endsWith('.jar')
+          : lowerPath.endsWith('.zip') || (contentType === 'ResourcePack' && item.is_directory);
         if (!isArchive) continue;
 
         const key = archiveIconKey(item);
