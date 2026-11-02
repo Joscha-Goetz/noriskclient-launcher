@@ -87,6 +87,7 @@ export function App() {
   const { openCrashModal } = useCrashModalStore();
   const {
     analyticsConsent,
+    language,
     setAnalyticsConsent,
     shouldShowAnalyticsBanner,
     incrementLaunchCount,
